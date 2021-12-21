@@ -25,7 +25,7 @@ pipeline{
 		stage('Push') {
 
 			steps {
-				sh 'sudo docker push copyfiles:v1'
+				sh 'sudo docker push dineshelango/copyfiles:v1'
 			}
 		}
 	}
