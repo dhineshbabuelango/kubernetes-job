@@ -1,12 +1,19 @@
 pipeline{
 
-	agent  { docker { image 'centos:latest' } }
+	agent any
 
 	environment {
 		DOCKERHUB_CREDENTIALS=credentials('dockerrepo')
 	}
 
 	stages {
+
+        stage('isntall-docker'){
+            steps {
+                sh 'sudo yum install -y docker'
+                sh 'sudo systemctl restart docker'
+            }
+        }
 
 		stage('Build') {
 
