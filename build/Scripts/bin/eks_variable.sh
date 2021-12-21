@@ -9,5 +9,4 @@ export home_dir
 
 export log_dir=${home_dir}/logs
 export conf_dir=${home_dir}/config
-
-
+url="https://github.com/phayes/geoPHP/tarball/master"

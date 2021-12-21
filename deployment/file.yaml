@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: dhinesh
+spec:
+  containers:
+  - name: dhinesh
+    image: dineshelango/copyfiles:v1
+    command: [ "sleep", "360" ]
