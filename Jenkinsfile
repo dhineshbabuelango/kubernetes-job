@@ -8,17 +8,10 @@ pipeline{
 
 	stages {
 
-        stage('isntall-docker'){
-            steps {
-                sh 'sudo yum install -y docker'
-                sh 'sudo systemctl restart docker'
-            }
-        }
-
 		stage('Build') {
 
 			steps {
-				sh 'sudo docker build -t copyfiles:v1 build'
+				sh 'docker build -t copyfiles:v1 build'
 			}
 		}
 
@@ -32,7 +25,7 @@ pipeline{
 		stage('Push') {
 
 			steps {
-				sh 'sudo docker push copyfiles:v1'
+				sh 'docker push copyfiles:v1'
 			}
 		}
 	}
