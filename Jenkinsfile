@@ -32,7 +32,7 @@ pipeline{
 
         stage('deploy-eks') {
             steps {
-                sh "kubectl apply -f ${GIT_BRANCH}/deployment/file.yaml"
+                sh "kubectl apply -f deployment/file.yaml"
             }
         }
 	}
