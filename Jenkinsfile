@@ -11,7 +11,7 @@ pipeline{
 		stage('Build') {
 
 			steps {
-				sh 'sudo docker build -t copyfiles:v1 build'
+				sh 'sudo docker build -t copyfiles:v2 build'
 			}
 		}
 
@@ -25,8 +25,8 @@ pipeline{
 		stage('Push') {
 
 			steps {
-                sh 'sudo docker tag copyfiles:v1 dineshelango/copyfiles:v1'
-				sh 'sudo docker push dineshelango/copyfiles:v1'
+                sh 'sudo docker tag copyfiles:v1 dineshelango/copyfiles:v2'
+				sh 'sudo docker push dineshelango/copyfiles:v2'
 			}
 		}
 

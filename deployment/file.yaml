@@ -1,9 +1,17 @@
-apiVersion: v1
+piVersion: v1
 kind: Pod
 metadata:
   name: dhinesh
 spec:
   containers:
   - name: dhinesh
-    image: dineshelango/copyfiles:v1
+    image: dineshelango/copyfiles:v2
     command: [ "sleep", "360" ]
+    volumeMounts:
+      - mountPath: "/data"
+        name: task-pv-storage
+  volumes:
+    - name: task-pv-storage
+      hostPath:
+        path: /Users/dhineshbabuelango
+        type: Directory
