@@ -11,7 +11,7 @@ pipeline{
 		stage('Build') {
 
 			steps {
-				sh 'docker build -t copyfiles:latest build'
+				sh 'docker build -t copyfiles:v1 build'
 			}
 		}
 
@@ -25,7 +25,7 @@ pipeline{
 		stage('Push') {
 
 			steps {
-				sh 'docker push scriptcopyfles:latest'
+				sh 'docker push copyfiles:v1'
 			}
 		}
 	}
