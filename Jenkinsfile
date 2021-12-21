@@ -1,19 +1,39 @@
-pipeline {
-    environment {
-        registry = "dhineshelango/copyfiles"
-        registryCredential = "dockerrepo"
-        dockerImage = ''
-    }
-    agent any
-    stages {
-        stage('pulling the repo')
-        steps {
-            git 'https://github.com/dhineshbabuelango/kubernetes-job.git'
-        }
-        stage('dockerbuild')
-        steps {
-            sh 'docker build -t copyfiles:v1 build'
-        }
-    }
+pipeline{
+
+	agent any
+
+	environment {
+		DOCKERHUB_CREDENTIALS=credentials('dockerrepo')
+	}
+
+	stages {
+
+		stage('Build') {
+
+			steps {
+				sh 'docker build -t copyfiles:latest build'
+			}
+		}
+
+		stage('Login') {
+
+			steps {
+				sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+			}
+		}
+
+		stage('Push') {
+
+			steps {
+				sh 'docker push scriptcopyfles:latest'
+			}
+		}
+	}
+
+	post {
+		always {
+			sh 'docker logout'
+		}
+	}
 
 }
