@@ -1,6 +1,6 @@
 pipeline{
 
-	agent docker
+	agent  { docker { image 'centos:latest' } }
 
 	environment {
 		DOCKERHUB_CREDENTIALS=credentials('dockerrepo')
