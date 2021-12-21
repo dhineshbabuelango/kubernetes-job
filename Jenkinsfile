@@ -29,6 +29,12 @@ pipeline{
 				sh 'sudo docker push dineshelango/copyfiles:v1'
 			}
 		}
+
+        stage('deploy-eks') {
+            steps {
+                sh "kubectl apply -f ${GIT_BRANCH}/deployment/file.yaml"
+            }
+        }
 	}
 
 	post {
