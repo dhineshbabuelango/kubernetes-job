@@ -42,5 +42,14 @@ pipeline {
                 }
             }
         }
+        stage('deploy') {
+            steps {
+                dir('deployment') {
+                    container('docker') {
+                        sh 'kubectl apply -f copyfiles-"${BUILD_NUMBER}".yaml -n jenkins'
+                    }
+                }
+            }
+        }
     }
 }
