@@ -23,16 +23,6 @@ pipeline {
             }
         }
 
-        stage('docker-push') {
-            steps {
-                script {
-                    container('docker') {
-                        docker.withRegistry( '', registryCredential ) {
-                            docker.Image.push()
-                        }
-                    }
-                }
-            }
-        }
+
     }
 }
