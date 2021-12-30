@@ -17,10 +17,19 @@ pipeline {
                 dir('build') {
                     container('docker') {
                         script {
-                            dockerImage = docker.build("copyfiles:${env.BUILD_ID}")
-                            docker.withRegistry( '', 'registryCredential' ) {
-                                dockerImage.push()
+                            dockerImage = docker.build registry + ":$BUILD_NUMBER"
                             }
+                        }
+                    }
+                }
+            }
+        }
+        stage('docker-push') {
+            steps {
+                container('docker') {
+                    script {
+                        docker.withRegistry( '', registryCredential ) {
+                            dockerImage.push()
                         }
                     }
                 }
