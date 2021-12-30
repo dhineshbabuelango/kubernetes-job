@@ -45,8 +45,8 @@ pipeline {
         stage('deploy') {
             steps {
                 dir('deployment') {
-                    container('kubectl') {
-                        sh 'kubectl apply -f copyfiles-"${BUILD_NUMBER}".yaml -n jenkins'
+                    container('jnlp') {
+                        kubernetesDeploy(configs: "copyfiles-${BUILD_NUMBER}.yaml")
                     }
                 }
             }
