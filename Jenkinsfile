@@ -2,6 +2,7 @@ pipeline {
     agent {
         kubernetes {
             yamlFile 'job.yaml'
+            defaultContainer 'docker'
         }
     }
 
@@ -16,8 +17,8 @@ pipeline {
         stage('dockerbuild') {
             steps {
                 dir('build') {
-                    container('docker') {
-                        sh 'docker build -t copyfiles:v5 .'
+                    script {
+                        docker.build("copyfiles:${env.BUILD_ID}")
                     }
                 }
             }
