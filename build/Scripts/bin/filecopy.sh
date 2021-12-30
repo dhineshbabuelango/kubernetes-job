@@ -35,8 +35,7 @@ if curl ${url} -o ${conf_dir}/file.xml
     then
     _log "[INFO]: File downloaded Successfully and saved in ${conf_dir}"
     _log "[INFO]: Pushing the file to /data"
-    mv 
-else ${conf_dir}/file.xml /data/
+else 
     _log "[ERROR]: Error in Downloading the file"
     exit 1
 fi
