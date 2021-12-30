@@ -4,12 +4,12 @@ pipeline {
             yamlFile 'pod.yaml'
         }
     }
-
+/*
     environment {
         registry = 'dineshelango/copyfiles'
         registryCredential = 'dockercred'
     }
-
+*/
     stages {
         stage('docker-build') {
             steps {
@@ -22,7 +22,7 @@ pipeline {
                 }
             }
         }
-
+/*
         stage('docker-push') {
             steps {
                 script {
@@ -34,5 +34,6 @@ pipeline {
                 }
             }
         }
+*/
     }
 }
