@@ -1,6 +1,6 @@
 pipeline {
     agent {
-        kuberbetes {
+        kubernetes {
             yamlFile 'job.yaml'
         }
     }
