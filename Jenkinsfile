@@ -18,7 +18,7 @@ pipeline {
             steps {
                 dir('build') {
                     script {
-                        container('docker') {
+                        container('jnlp') {
                              docker.build("copyfiles:${env.BUILD_ID}")
                         }
                     }
