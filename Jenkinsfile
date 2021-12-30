@@ -18,7 +18,7 @@ pipeline {
                 dir('build') {
                     script {
                         container('docker') {
-                            dockerImage = docker.build copyfiles:v5
+                            dockerImage = docker.build(copyfiles)
                         }
                     }
                 }
