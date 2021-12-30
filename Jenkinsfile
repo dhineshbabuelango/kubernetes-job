@@ -13,5 +13,16 @@ pipeline {
                 }
             }
         }
+        stage('dockerbuild') {
+            steps {
+                dir('build') {
+                    script {
+                        container('docker') {
+                            dockerImage = docker.build copyfiles:v5
+                        }
+                    }
+                }
+            }
+        }
     }
 }
