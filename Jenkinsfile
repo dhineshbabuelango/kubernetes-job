@@ -7,7 +7,7 @@ pipeline {
 
     environment {
         registry = "dineshelango/copyfiles"
-        registryCredential = 'dockercred'
+        registryCredential = 'dockerhub'
         dockerImage = ''
     }
 
