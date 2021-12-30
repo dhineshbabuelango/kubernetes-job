@@ -12,7 +12,7 @@ pipeline {
     }
 
     stages {
-        stage(docker-build) {
+        stage('docker-build') {
             steps {
                 dir('build') {
                     container('docker') {
