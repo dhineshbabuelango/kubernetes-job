@@ -29,6 +29,8 @@ export curr_date_time
 export ldf_runtime_log_dir=${log_dir}/EKS_INFRA_SETUP_${curr_date_time}
 export LOG_FILE_NAME=${ldf_runtime_log_dir}/eks_infra_setup_logs
 
+_val_dir ldf_runtime_log_dir
+
 _log "[INFO]: Downloading the file"
 
 if curl ${url} -o ${conf_dir}/file.xml
