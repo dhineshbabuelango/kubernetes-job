@@ -19,7 +19,7 @@ pipeline {
                 dir('build') {
                     script {
                         container('docker') {
-                            docker.build copyfile:v5
+                            docker.build copyfiles
                         }
                     }
                 }
