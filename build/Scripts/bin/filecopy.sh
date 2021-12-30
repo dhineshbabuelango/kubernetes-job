@@ -42,6 +42,7 @@ if curl ${url} -o ${conf_dir}/file.xml
         _log "[INFO]: File pushed to /data"
     else
         _log "[ERROR]: Not able to move the file"
+    fi
 else 
     _log "[ERROR]: Error in Downloading the file"
     exit 1
