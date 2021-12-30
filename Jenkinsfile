@@ -18,7 +18,9 @@ pipeline {
             steps {
                 dir('build') {
                     script {
-                        docker.build("copyfiles:${env.BUILD_ID}")
+                        container('docker') {
+                            docker.build copyfile:v5
+                        }
                     }
                 }
             }
