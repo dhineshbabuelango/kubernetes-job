@@ -1,15 +1,15 @@
 pipeline {
     agent {
         kubernetes {
-            yamlFile 'pod.yaml'
+            yamlFile 'job.yaml'
         }
     }
-/*
+
     environment {
         registry = 'dineshelango/copyfiles'
         registryCredential = 'dockercred'
     }
-*/
+
     stages {
         stage('docker-build') {
             steps {
@@ -22,7 +22,7 @@ pipeline {
                 }
             }
         }
-/*
+
         stage('docker-push') {
             steps {
                 script {
@@ -34,6 +34,5 @@ pipeline {
                 }
             }
         }
-*/
     }
 }
