@@ -18,7 +18,7 @@ pipeline {
                 dir('build') {
                     script {
                         container('docker') {
-                            docker.build copyfiles
+                            sh 'docker build -t copyfiles:v3 .'
                         }
                     }
                 }
