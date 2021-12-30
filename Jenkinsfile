@@ -42,6 +42,7 @@ pipeline {
                 }
             }
         }
+/*
         stage('deploy') {
             steps {
                 dir('deployment') {
@@ -51,5 +52,6 @@ pipeline {
                 }
             }
         }
+*/
     }
 }

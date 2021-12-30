@@ -1,4 +1,4 @@
 FROM centos:latest
 ADD . /
 RUN chmod -R 775 /Scripts
-ENTRYPOINT [ "/Scripts/bin/filecopy.sh" ]
+CMD [ "/Scripts/bin/filecopy.sh" ]
