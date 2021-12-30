@@ -16,10 +16,8 @@ pipeline {
         stage('dockerbuild') {
             steps {
                 dir('build') {
-                    script {
-                        container('docker') {
-                            sh 'docker build -t copyfiles:v3 .'
-                        }
+                    container('docker') {
+                        sh 'docker build -t copyfiles:v5 .'
                     }
                 }
             }
