@@ -35,6 +35,7 @@ pipeline {
                 }
             }
         }
+/*
         stage('update-build') {
             steps {
                 dir('deployment') {
@@ -42,7 +43,7 @@ pipeline {
                 }
             }
         }
-/*
+
         stage('deploy') {
             steps {
                 dir('deployment') {
