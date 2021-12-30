@@ -25,21 +25,14 @@ pipeline {
                     script {
                         container('docker') {
                              dockerImage = docker.build("copyfiles:${env.BUILD_ID}")
+                             docker.withRegistry( '', 'registryCredential' ) {
+                                 dockerImage.push()
+                             }
                         }
                     }
                 }
             }
         }
-        stage('docker-push') {
-            steps {
-                script {
-                    container('docker') {
-                        docker.withRegistry( '', 'registryCredential' ) {
-                            dockerImage.push()
-                        }
-                    }
-                }
-            }
         }
     }
 }
