@@ -2,33 +2,24 @@ pipeline {
     agent {
         kubernetes {
             yamlFile 'job.yaml'
+            defaultContainer 'docker'
         }
-    }
-
-    environment {
-        registry = 'dineshelango/copyfiles'
-        registryCredential = 'dockercred'
     }
 
     stages {
-        stage('docker-build') {
+        stage('hostname') {
             steps {
-                dir(build) {
-                    script {
-                        container('docker') {
-                            docker.build("copyfiles:${env.BUILD_ID}")
-                        }
-                    }
+                container('docker') {
+                    sh 'hostname'
                 }
             }
         }
-
-        stage('docker-push') {
+        stage('dockerbuild') {
             steps {
-                script {
-                    container('docker') {
-                        docker.withRegistry( '', registryCredential ) {
-                            docker.Image.push()
+                dir('build') {
+                    script {
+                        container('docker') {
+                             docker.build("copyfiles:${env.BUILD_ID}")
                         }
                     }
                 }
