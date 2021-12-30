@@ -8,6 +8,7 @@ pipeline {
     environment {
         registry= 'dineshelango/copyfiles'
         registryCredential= 'dockercred'
+        dockerImage = ''
     }
 
     stages {
