@@ -1,23 +1,16 @@
 pipeline {
-    agnet {
+    agent {
         kuberbetes {
             yamlFile 'job.yaml'
         }
     }
 
-    environment {
-        DOCKERHUB_CREDENTIALS=credentials('dockercred')
-    }
-
-    stage {
-        stage('docker-build') {
+    stages {
+        stage('hostname') {
             steps {
-                dir("${workspace}/build") {
                 container('docker') {
-                    dockerImage = docker.build copyfiles
+                    sh 'hostname'
                 }
-                }
-
             }
         }
     }
