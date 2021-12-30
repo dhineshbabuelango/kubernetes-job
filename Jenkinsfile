@@ -35,5 +35,12 @@ pipeline {
                 }
             }
         }
+        stage('update-build') {
+            steps {
+                dir('deployment') {
+                    sh "cat file.yaml |sed "s#dineshelango/copyfiles:v2#dineshelango/copyfiles:${BUILD_NUMBER}#g" > copyfiles-${BUILD_NUMBER}.yaml"
+                }
+            }
+        }
     }
 }
