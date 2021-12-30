@@ -19,7 +19,7 @@ pipeline {
                 dir('build') {
                     script {
                         container('docker') {
-                            docker.build copyfiles
+                             docker.build("copyfiles:${env.BUILD_ID}")
                         }
                     }
                 }
