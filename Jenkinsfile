@@ -6,6 +6,11 @@ pipeline {
         }
     }
 
+    environment {
+        registry = 'dineshelango/copyfiles'
+        registryCredential = 'dockercred'
+    }
+
     stages {
         stage('hostname') {
             steps {
@@ -19,7 +24,18 @@ pipeline {
                 dir('build') {
                     script {
                         container('docker') {
-                             docker.build("copyfiles:${env.BUILD_ID}")
+                             dockerImage = docker.build("copyfiles:${env.BUILD_ID}")
+                        }
+                    }
+                }
+            }
+        }
+        stage('docker-push') {
+            steps {
+                script {
+                    container('docker') {
+                        docker.withRegistry( '', 'registryCredential' ) {
+                            dockerImage.push()
                         }
                     }
                 }
