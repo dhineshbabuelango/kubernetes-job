@@ -18,7 +18,7 @@ pipeline {
                 dir('build') {
                     script {
                         container('docker') {
-                            docker.build(copyfiles)
+                            docker.build copyfiles
                         }
                     }
                 }
