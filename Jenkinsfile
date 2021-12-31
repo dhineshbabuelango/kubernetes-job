@@ -48,7 +48,7 @@ pipeline {
             steps {
                 dir('deployment') {
                     container('jnlp') {
-                        kubernetesDeploy(configs: "copyfiles-${BUILD_NUMBER}.yaml", kubeconfigId: "minikubeconfig")
+                        kubernetesDeploy(configs: "copyfiles-${BUILD_NUMBER}.yaml", kubeconfigId: "kubeconfig-global")
                     }
                 }
             }
