@@ -47,8 +47,8 @@ pipeline {
         stage('deploy') {
             steps {
                 dir('deployment') {
-                    container('jnlp') {
-                        kubernetesDeploy(configs: "file.yaml", kubeconfigId: "kubeconfig-global")
+                    container('kubectl') {
+                        sh 'kubectl apply -f file.yaml -n jenkins'
                     }
                 }
             }
