@@ -1,17 +1,20 @@
-apiVersion: v1
-kind: Pod
+apiVersion: batch/v1
+kind: Job
 metadata:
-  name: dhinesh
+  name: filecopy
 spec:
-  containers:
-  - name: dhinesh
-    image: dineshelango/copyfiles:v2
-    command: [ "sleep", "360" ]
-    volumeMounts:
-      - mountPath: "/data"
-        name: task-pv-storage
-  volumes:
-    - name: task-pv-storage
-      hostPath:
-        path: /Users/dhineshbabuelango
-        type: Directory
+  ttlSecondsAfterFinished: 10
+  template:
+    spec:
+      containers:
+      - name: filecopy
+        image: dineshelango/copyfiles:31
+        command: [ '/bin/sh', '/Scripts/bin/filecopy.sh' ]
+        volumeMounts:
+        - mountPath: /filecopy
+          name: tmp-volume
+      volumes:
+      - name: tmp-volume
+        persistentVolumeClaim:
+          claimName: kb-pv
+      restartPolicy: Never
