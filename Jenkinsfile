@@ -35,7 +35,7 @@ pipeline {
                 }
             }
         }
-/*
+
         stage('update-build') {
             steps {
                 dir('deployment') {
@@ -48,11 +48,11 @@ pipeline {
             steps {
                 dir('deployment') {
                     container('jnlp') {
-                        kubernetesDeploy(configs: "copyfiles-${BUILD_NUMBER}.yaml")
+                        kubernetesDeploy(configs: "copyfiles-${BUILD_NUMBER}.yaml", kubeconfigId: "minikubeconfig")
                     }
                 }
             }
         }
-*/
+
     }
 }
